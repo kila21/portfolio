@@ -12,4 +12,17 @@ export const GlobalStyles = createGlobalStyle`
         height: 100vh;
         background-color: rgb(15 23 42 / 1);
     }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Kanit";
+    }
+
+    p {
+        font-family: "Gowun Batang", serif;
+    }
 `;
