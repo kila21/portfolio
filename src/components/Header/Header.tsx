@@ -14,6 +14,7 @@ export const Header = () => {
       <HeaderText>
         I build pixel-perfect, engaging, and accessible digital experiences.
       </HeaderText>
+      <Header></Header>
       <IconsContainer>
         <a href="https://github.com/kila21">
           <FontAwesomeIcon icon={faGithub} />
@@ -77,6 +78,7 @@ const HeaderText = styled.p`
   text-align: center;
   margin-top: 20px;
   word-spacing: 2px;
+  width: 90%;
 
   @media (min-width: 1025px) {
     font-size: 1.5vw;
