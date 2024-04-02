@@ -49,11 +49,14 @@ const HeaderStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 
   @media (min-width: 1025px) {
     width: 50%;
     height: 100%;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
   }
 `;
 
