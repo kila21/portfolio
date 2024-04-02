@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const HeaderNavItem = (props: {
   title: string;
   active: boolean;
+  href: string;
   click: () => void;
 }) => {
   return (
     <HeaderNavItemStyled onClick={props.click}>
-      <HeaderNavItemLink $active={props.active}>
+      <HeaderNavItemLink $active={props.active} href={"#" + props.href}>
         <HeaderNavItemIndicator></HeaderNavItemIndicator>
         <HeaderNavItemtext>{props.title}</HeaderNavItemtext>
       </HeaderNavItemLink>
@@ -27,6 +28,7 @@ const HeaderNavItemLink = styled.a<{ $active: boolean }>`
   height: 20px;
   display: flex;
   align-items: center;
+  text-decoration: none;
   cursor: pointer;
 
   & > span:nth-child(1) {
