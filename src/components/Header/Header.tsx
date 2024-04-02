@@ -5,6 +5,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { HeaderNav } from "./HeaderNav";
 
 export const Header = () => {
   return (
@@ -14,21 +15,27 @@ export const Header = () => {
       <HeaderText>
         I build pixel-perfect, engaging, and accessible digital experiences.
       </HeaderText>
-      <Header></Header>
+      <HeaderNav />
       <IconsContainer>
-        <a href="https://github.com/kila21">
+        <a target="_blank" href="https://github.com/kila21">
           <FontAwesomeIcon icon={faGithub} />
         </a>
 
-        <a href="">
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/luka-kilasonia-937a9a211/"
+        >
           <FontAwesomeIcon icon={faLinkedin} />
         </a>
 
-        <a href="">
+        <a target="_blank" href="https://www.facebook.com/killlllllllllla/">
           <FontAwesomeIcon icon={faFacebook} />
         </a>
 
-        <a href="">
+        <a
+          target="_blank"
+          href="https://www.instagram.com/killlllllllllaa?fbclid=IwAR2Hxb_wonJFzOlllMZf38tWU37FSrIPp0F7O55S0PijhoCQrtH9bwItSm8"
+        >
           <FontAwesomeIcon icon={faInstagram} />
         </a>
       </IconsContainer>
