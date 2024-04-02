@@ -8,7 +8,6 @@ export const HeaderNav = () => {
 
   const checkScreenSize = () => {
     setScreen(window.innerWidth);
-    console.log(screen);
   };
 
   useEffect(() => {
@@ -25,16 +24,19 @@ export const HeaderNav = () => {
       {screen >= 1024 && (
         <HeaderNavigation>
           <HeaderNavItem
+            href="about"
             title="about"
             active={activeNum === 0 && true}
             click={() => setActiveNum(0)}
           />
           <HeaderNavItem
+            href="experience"
             title="experience"
             active={activeNum === 1 && true}
             click={() => setActiveNum(1)}
           />
           <HeaderNavItem
+            href="projects"
             title="projects"
             active={activeNum === 2 && true}
             click={() => setActiveNum(2)}
