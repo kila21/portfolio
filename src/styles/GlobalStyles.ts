@@ -7,10 +7,16 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+
     body {
         width: 100vw;
         height: 100vh;
         background-color: rgb(15 23 42 / 1);
+    }
+
+    #root {
+        display: flex;
+        margin-top: 50px;
     }
 
     h1,
@@ -24,5 +30,11 @@ export const GlobalStyles = createGlobalStyle`
 
     p {
         font-family: "Gowun Batang", serif;
+    }
+
+    @media (max-width: 1024px) {
+        #root {
+            flex-direction: column;
+        }
     }
 `;
