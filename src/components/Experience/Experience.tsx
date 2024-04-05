@@ -9,7 +9,7 @@ export const Experience = () => {
         date="2022 - present"
         title="React Developer(online Courses)"
         text="After working as an Angular Developer, I start to develope myself and learn React. I took Udemy React Course. watching some videos in youtube and also try to use google and ChatGPT. Currently, trying to Build some project, like portfolio and find Job where i took some experience and work to develope my Rect Skills."
-        tools={["React, Redux", "Router", "Styled Components"]}
+        tools={["React", "Redux", "Router", "Styled Components"]}
       />
 
       <ExperienceItem

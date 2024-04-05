@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ExperienceTool } from "./ExperienceTool";
 
 export const ExperienceItem = (props: {
   date: string;
@@ -13,6 +14,12 @@ export const ExperienceItem = (props: {
         <ExperienceItemTitle>{props.title}</ExperienceItemTitle>
 
         <ExperienceItemText>{props.text}</ExperienceItemText>
+
+        <ExperienceToolsContainer>
+          {props.tools.map((tool, i) => (
+            <ExperienceTool key={tool + i} text={tool} />
+          ))}
+        </ExperienceToolsContainer>
       </ExperienceItemContent>
     </ExperienceItemStyled>
   );
@@ -61,4 +68,13 @@ const ExperienceItemText = styled.p`
   line-height: 1.7;
   margin-top: 15px;
   margin-bottom: 20px;
+`;
+
+const ExperienceToolsContainer = styled.div`
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 `;
