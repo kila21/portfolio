@@ -45,7 +45,7 @@ const ProjectsItemStyled = styled.div`
 `;
 
 const ProjectsItemImage = styled.img`
-  width: 170px;
+  min-width: 170px;
   height: 95px;
   cursor: pointer;
 
