@@ -48,6 +48,9 @@ const AboutStyled = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 0 50px;
+  @media (max-width: 600px) {
+    margin-left: 30px;
+  }
 `;
 
 const AboutTitle = styled.h3`

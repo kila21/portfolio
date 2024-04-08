@@ -1,7 +1,9 @@
+import styled from "styled-components";
+
 import { About } from "./components/About/About";
 import { Experience } from "./components/Experience/Experience";
 import { Header } from "./components/Header/Header";
-import styled from "styled-components";
+import { Projects } from "./components/Projects/Projects";
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <MainContentStyled>
         <About />
         <Experience />
+        <Projects />
       </MainContentStyled>
     </>
   );

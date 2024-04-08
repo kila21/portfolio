@@ -41,6 +41,9 @@ const ExperienceStyled = styled.div`
   display: flex;
   flex-direction: column;
   margin: 50px;
+  @media (max-width: 600px) {
+    margin-left: 30px;
+  }
 `;
 
 const ExperienceTitle = styled.h3`
