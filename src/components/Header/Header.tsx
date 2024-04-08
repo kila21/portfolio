@@ -49,6 +49,7 @@ const HeaderStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: hidden;
   /* margin-top: 50px; */
 
   @media (min-width: 1025px) {

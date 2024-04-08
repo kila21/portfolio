@@ -21,7 +21,7 @@ export const HeaderNav = () => {
 
   return (
     <HeaderNavContainerStyled>
-      {screen >= 1024 && (
+      {screen > 1024 && (
         <HeaderNavigation>
           <HeaderNavItem
             href="about"

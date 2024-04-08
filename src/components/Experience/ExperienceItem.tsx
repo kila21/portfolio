@@ -47,7 +47,9 @@ const ExperienceItemDate = styled.div`
   width: 35%;
   margin-right: 20px;
   padding: 10px 10px;
+  margin-top: 20px;
   @media (max-width: 768px) {
+    margin: 0;
     width: 100%;
     margin-bottom: 15px;
   }
@@ -56,11 +58,14 @@ const ExperienceItemDate = styled.div`
 const ExperienceItemContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const ExperienceItemTitle = styled.h4`
   color: ${(props) => props.theme.colors.white};
+  margin-top: 20px;
+  word-spacing: 2px;
+  letter-spacing: 1.3px;
 `;
 
 const ExperienceItemText = styled.p`

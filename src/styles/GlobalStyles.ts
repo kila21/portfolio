@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         width: 100vw;
         height: 100vh;
         background-color: rgb(15 23 42 / 1);
+        overflow-x: hidden;
     }
 
     #root {
