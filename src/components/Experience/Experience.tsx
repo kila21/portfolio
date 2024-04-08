@@ -25,6 +25,13 @@ export const Experience = () => {
         text="After A course, I Start A job As a Freelance Junior Angular Developer. Where, I Learn A state Managment for Angular(ngrx and rxjs).And my job was to rewrite website and implement some new designs.Like re-branding"
         tools={["Typescript", "Angular", "Git", "Ngrx", "Rxjs"]}
       />
+
+      <ExperienceResume
+        target="_blank"
+        href="https://drive.google.com/file/d/1tPJrIiuq1qJy7THw1kx7JLMf25Fs2ovn/view?usp=drive_link"
+      >
+        View Full Resume
+      </ExperienceResume>
     </ExperienceStyled>
   );
 };
@@ -42,4 +49,13 @@ const ExperienceTitle = styled.h3`
   @media (max-width: 1024px) {
     display: flex;
   }
+`;
+
+const ExperienceResume = styled.a`
+  color: ${(props) => props.theme.colors.white};
+  margin-top: 30px;
+  font-size: 19px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  outline: none;
 `;
