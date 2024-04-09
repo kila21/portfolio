@@ -28,7 +28,7 @@ export const Experience = () => {
 
       <ExperienceResume
         target="_blank"
-        href="https://drive.google.com/file/d/1tPJrIiuq1qJy7THw1kx7JLMf25Fs2ovn/view?usp=drive_link"
+        href="https://drive.google.com/file/d/1oDN_4DCl04ON6exHKBIlLbGH6XZ8Jqbq/view?usp=drive_link"
       >
         View Full Resume
       </ExperienceResume>
