@@ -35,7 +35,7 @@ const HeaderNavItemLink = styled.a<{ $active: boolean }>`
     background-color: ${(props) =>
       props.$active ? props.theme.colors.white : props.theme.colors.grey};
 
-    width: ${(props) => props.$active && "64px"};
+    width: ${(props) => (props.$active ? "64px" : "32px")};
   }
 
   & > span:nth-child(2) {

@@ -45,9 +45,14 @@ const ProjectsItemStyled = styled.div`
 `;
 
 const ProjectsItemImage = styled.img`
-  min-width: 170px;
+  min-width: 150px;
   height: 95px;
   cursor: pointer;
+
+  @media (max-width: 700px) {
+    width: 180px;
+    min-height: 120px;
+  }
 
   @media (min-width: 1024px) {
     margin: 10px;
