@@ -15,14 +15,48 @@ export const FullProjectsPage = () => {
           date={2023}
           link="https://eat-curious-clone-rose.vercel.app/"
           project="Eat Curious Clone"
-          tools={["typescript", "react", "redux"]}
+          tools={["typescript", "react", "router", "styled components"]}
         ></FullProjectsItem>
 
         <FullProjectsItem
           date={2023}
-          link="https://eat-curious-clone-rose.vercel.app/"
-          project="Eat Curious Clone"
-          tools={["typescript", "react", "redux", "typescript", "react"]}
+          link="https://lepay-tourism-clone.vercel.app/"
+          project="Tourism Website Clone"
+          tools={[
+            "typescript",
+            "react",
+            "router",
+            "react-slick",
+            "styled components",
+          ]}
+        ></FullProjectsItem>
+
+        <FullProjectsItem
+          date={2023}
+          link="https://weather-app-kila.vercel.app/"
+          project="Weather App"
+          tools={["typescript", "react"]}
+        ></FullProjectsItem>
+
+        <FullProjectsItem
+          date={2023}
+          link="https://to-do-phi-opal.vercel.app/"
+          project="Todo App (test@test.com, test123)"
+          tools={["React", "Redux", "Typescript"]}
+        ></FullProjectsItem>
+
+        <FullProjectsItem
+          date={2022}
+          link="https://redberry-bootcamp-assigment6.vercel.app/"
+          project="Redberry #6(only 1920x Any px)"
+          tools={["Javascript", "react"]}
+        ></FullProjectsItem>
+
+        <FullProjectsItem
+          date={2022}
+          link="https://github.com/kila21/Redbery-Project"
+          project="Redberry Project"
+          tools={["Angular"]}
         ></FullProjectsItem>
       </FullProjectsContainer>
     </FullProjectsPageStyled>
