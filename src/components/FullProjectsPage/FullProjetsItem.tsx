@@ -12,6 +12,7 @@ export const FullProjectsItem = (props: {
   const checkScreenSize = () => {
     setScreenSize(window.innerWidth);
   };
+
   useEffect(() => {
     window.addEventListener("resize", checkScreenSize);
 
@@ -19,8 +20,15 @@ export const FullProjectsItem = (props: {
       window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
+
+  const handleClick = () => {
+    if (screenSize < 600) {
+      window.open(props.link, "_blank");
+    }
+  };
+
   return (
-    <FullProjectsItemStyled>
+    <FullProjectsItemStyled onClick={handleClick}>
       <FullProjectsDate>{props.date}</FullProjectsDate>
       <FullProjectsProject>{props.project}</FullProjectsProject>
       {screenSize >= 1024 && (
@@ -58,6 +66,7 @@ const FullProjectsDate = styled.div`
 
 const FullProjectsProject = styled.div`
   color: ${(props) => props.theme.colors.white};
+  max-width: 150px;
   min-width: 150px;
   margin-right: 50px;
   font-size: 20px;
@@ -67,7 +76,7 @@ const FullProjectsLink = styled.a`
   color: ${(props) => props.theme.colors.grey};
   outline: none;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 const FullProjectsTools = styled.div`
@@ -76,13 +85,14 @@ const FullProjectsTools = styled.div`
   align-items: center;
   flex-wrap: wrap;
   color: ${(props) => props.theme.colors.turquoise};
-  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
 `;
 
 const FullProjectsToolsItem = styled.div`
   min-width: 30px;
   margin-right: 20px;
 
-  font-size: 20px;
+  font-size: 18px;
   text-transform: capitalize;
 `;
