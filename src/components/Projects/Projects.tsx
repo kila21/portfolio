@@ -33,6 +33,10 @@ export const Projects = () => {
         liveLink="https://weather-app-kila.vercel.app/"
         repoLink="https://github.com/kila21/Weather?tab=readme-ov-file"
       />
+
+      <FullProjectsLink href="/projects">
+        View Full Project Page
+      </FullProjectsLink>
     </ProjectsStyled>
   );
 };
@@ -54,4 +58,14 @@ const ProjectTitle = styled.h3`
   @media (max-width: 1024px) {
     display: flex;
   }
+`;
+
+const FullProjectsLink = styled.a`
+  color: ${(props) => props.theme.colors.white};
+  font-size: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  letter-spacing: 1.2px;
+  outline: none;
+  text-decoration: none;
 `;

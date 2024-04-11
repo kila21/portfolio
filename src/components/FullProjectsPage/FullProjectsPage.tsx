@@ -4,8 +4,11 @@ import { FullProjectsItem } from "./FullProjetsItem";
 export const FullProjectsPage = () => {
   return (
     <FullProjectsPageStyled>
-      <FullProjectsAuthor>Luka Kilasonia</FullProjectsAuthor>
-      <FullProjectsTitle>All Projects</FullProjectsTitle>
+      <FullProjectsBack href="/">
+        &larr;
+        <FullProjectsAuthor>Luka Kilasonia</FullProjectsAuthor>
+      </FullProjectsBack>
+      <FullProjectsTitle>All Project</FullProjectsTitle>
 
       <FullProjectsContainer>
         <FullProjectsItem
@@ -40,7 +43,16 @@ const FullProjectsTitle = styled.h1`
 `;
 
 const FullProjectsAuthor = styled.h3`
+  margin-left: 15px;
+`;
+
+const FullProjectsBack = styled.a`
   color: ${(props) => props.theme.colors.turquoise};
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  cursor: pointer;
 `;
 
 const FullProjectsContainer = styled.div`
