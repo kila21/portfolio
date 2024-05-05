@@ -4,11 +4,20 @@ import { ProjectsItem } from "./ProjectsItem";
 import weather from "../../images/weather.png";
 import lepay from "../../images/lepay.png";
 import eat from "../../images/eat.png";
+import spotify from "../../images/spotify.png";
 
 export const Projects = () => {
   return (
     <ProjectsStyled id="projects">
       <ProjectTitle>Projects</ProjectTitle>
+
+      <ProjectsItem
+        img={spotify}
+        text="Spotify Profile App. Where U can auth with spotify and see your profile. like: most liked tracks, recently played musics, your playlist and etc. But, First of All read readme of this App."
+        title="Spotify Profile App"
+        liveLink="https://spotify-app-kila21.vercel.app/"
+        repoLink="https://github.com/kila21/Spotify-App"
+      />
 
       <ProjectsItem
         img={eat}
