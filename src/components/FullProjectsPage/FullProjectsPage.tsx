@@ -12,6 +12,20 @@ export const FullProjectsPage = () => {
 
       <FullProjectsContainer>
         <FullProjectsItem
+          date={2024}
+          link="https://spotify-app-kila21.vercel.app/"
+          project="Spotify Profile App"
+          tools={[
+            "typescript",
+            "react",
+            "router",
+            "styled components",
+            "spotify dashboard",
+            "spotify api",
+          ]}
+        ></FullProjectsItem>
+
+        <FullProjectsItem
           date={2023}
           link="https://eat-curious-clone-rose.vercel.app/"
           project="Eat Curious Clone"
