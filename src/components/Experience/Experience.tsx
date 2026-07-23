@@ -1,64 +1,73 @@
 import styled from "styled-components";
 import { ExperienceItem } from "./ExperienceItem";
+import { experience } from "../../data/experience";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { scrollReveal } from "../../styles/scrollReveal";
 
 export const Experience = () => {
+  const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+
   return (
-    <ExperienceStyled id="experience">
-      <ExperienceTitle>Experience </ExperienceTitle>
-      <ExperienceItem
-        date="2022 - present"
-        title="React Developer(online Courses)"
-        text="After working as an Angular Developer, I start to develope myself and learn React. I took Udemy React Course. watching some videos in youtube and also try to use google and ChatGPT. Currently, trying to Build some project, like portfolio and find Job where i took some experience and work to develope my Rect Skills."
-        tools={["React", "Redux", "Router", "Styled Components"]}
-      />
+    <ExperienceStyled id="experience" ref={ref} $visible={isVisible}>
+      <ExperienceTitle>Experience</ExperienceTitle>
 
-      <ExperienceItem
-        date="July - Dec, 2021"
-        title="TBC Angular Course"
-        text="6 month, TBC Angular Course, Where I Learn A lot about Angular, Typescript and Git. Working with group of people And myself to build some project And learn more a about Coding and proccess of working real projects."
-        tools={["Typescript", "Angular", "Git", "HTML", "CSS", "SCSS"]}
-      />
+      <TimelineList>
+        {experience.map((entry, i) => (
+          <ExperienceItem
+            key={entry.id}
+            date={entry.dateLabel}
+            title={entry.title}
+            organization={entry.organization}
+            text={entry.text}
+            tools={entry.tools}
+            isCurrent={entry.isCurrent}
+            isLast={i === experience.length - 1}
+          />
+        ))}
+      </TimelineList>
 
-      <ExperienceItem
-        date="Apr - Sep, 2022"
-        title="Junior Angular Developer"
-        text="After A course, I Start A job As a Freelance Junior Angular Developer. Where, I Learn A state Managment for Angular(ngrx and rxjs).And my job was to rewrite website and implement some new designs.Like re-branding"
-        tools={["Typescript", "Angular", "Git", "Ngrx", "Rxjs"]}
-      />
-
-      <ExperienceResume
-        target="_blank"
-        href="https://drive.google.com/file/d/1oDN_4DCl04ON6exHKBIlLbGH6XZ8Jqbq/view?usp=drive_link"
-      >
+      <ExperienceResume target="_blank" rel="noopener noreferrer" href="/resume.pdf">
         View Full Resume
       </ExperienceResume>
     </ExperienceStyled>
   );
 };
 
-const ExperienceStyled = styled.div`
-  cursor: pointer;
+const ExperienceStyled = styled.div<{ $visible?: boolean }>`
   display: flex;
   flex-direction: column;
   margin: 50px;
-  @media (max-width: 600px) {
+  ${scrollReveal}
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     margin-left: 30px;
   }
 `;
 
 const ExperienceTitle = styled.h3`
   display: none;
-  color: ${(props) => props.theme.colors.white};
-  @media (max-width: 1024px) {
+  color: ${(props) => props.theme.colors.text.primary};
+  margin-bottom: ${(props) => props.theme.spacing.md};
+  @media (max-width: ${(props) => props.theme.breakpoints.nav}) {
     display: flex;
   }
 `;
 
+const TimelineList = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: ${(props) => props.theme.spacing.md};
+`;
+
 const ExperienceResume = styled.a`
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.text.primary};
   margin-top: 30px;
   font-size: 19px;
   letter-spacing: 2px;
   text-decoration: none;
   outline: none;
+  transition: color ${(props) => props.theme.transitions.fast};
+
+  &:hover {
+    color: ${(props) => props.theme.colors.accent.turquoise};
+  }
 `;

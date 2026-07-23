@@ -7,11 +7,14 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
 
     body {
         width: 100vw;
         height: 100vh;
-        background-color: rgb(15 23 42 / 1);
+        background-color: ${(props) => props.theme.colors.background.base};
         overflow-x: hidden;
     }
 
@@ -33,7 +36,21 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "Gowun Batang", serif;
     }
 
-    @media (max-width: 1024px) {
+    a {
+        color: inherit;
+    }
+
+    ::selection {
+        background: ${(props) => props.theme.colors.accent.turquoiseMuted};
+        color: ${(props) => props.theme.colors.text.primary};
+    }
+
+    :focus-visible {
+        outline: 2px solid ${(props) => props.theme.colors.accent.turquoise};
+        outline-offset: 2px;
+    }
+
+    @media (max-width: ${(props) => props.theme.breakpoints.nav}) {
         #root {
             flex-direction: column;
         }

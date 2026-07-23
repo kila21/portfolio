@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { HeaderNavItem } from "./HeaderNavItem";
 import { useEffect, useState } from "react";
 
+const sections = [
+  { href: "about", title: "about" },
+  { href: "experience", title: "experience" },
+  { href: "projects", title: "projects" },
+];
+
 export const HeaderNav = () => {
   const [activeNum, setActiveNum] = useState(0);
-  const [screen, setScreen] = useState(window.innerWidth);
-
-  const checkScreenSize = () => {
-    setScreen(window.innerWidth);
-  };
 
   const handleScroll = () => {
     // make active nav link while scrolling
@@ -37,51 +38,66 @@ export const HeaderNav = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", checkScreenSize);
-
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener("resize", checkScreenSize);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
     <HeaderNavContainerStyled>
-      {screen > 1024 && (
-        <HeaderNavigation>
+      <HeaderNavigation>
+        {sections.map((section, i) => (
           <HeaderNavItem
-            href="about"
-            title="about"
-            active={activeNum === 0}
-            click={() => setActiveNum(0)}
+            key={section.href}
+            href={section.href}
+            title={section.title}
+            active={activeNum === i}
+            click={() => setActiveNum(i)}
           />
+        ))}
+      </HeaderNavigation>
+
+      <HeaderNavigationCompact>
+        {sections.map((section, i) => (
           <HeaderNavItem
-            href="experience"
-            title="experience"
-            active={activeNum === 1}
-            click={() => setActiveNum(1)}
+            key={section.href}
+            href={section.href}
+            title={section.title}
+            active={activeNum === i}
+            click={() => setActiveNum(i)}
+            compact
           />
-          <HeaderNavItem
-            href="projects"
-            title="projects"
-            active={activeNum === 2}
-            click={() => setActiveNum(2)}
-          />
-        </HeaderNavigation>
-      )}
+        ))}
+      </HeaderNavigationCompact>
     </HeaderNavContainerStyled>
   );
 };
 
 const HeaderNavContainerStyled = styled.div`
   width: 90%;
-  margin-top: 50px;
+  margin-top: ${(props) => props.theme.spacing.xl};
 `;
 
 const HeaderNavigation = styled.nav`
-  display: flex;
+  display: none;
   flex-direction: column;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.wide}) {
+    display: flex;
+  }
+`;
+
+const HeaderNavigationCompact = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: ${(props) => props.theme.spacing.lg};
+  list-style: none;
+  padding: 0;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.wide}) {
+    display: none;
+  }
 `;

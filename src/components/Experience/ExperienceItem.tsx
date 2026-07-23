@@ -1,85 +1,154 @@
 import styled from "styled-components";
-import { ExperienceTool } from "./ExperienceTool";
+import { Tag } from "../common/Tag";
 
 export const ExperienceItem = (props: {
   date: string;
   title: string;
+  organization?: string;
   text: string;
   tools: string[];
+  isCurrent?: boolean;
+  isLast?: boolean;
 }) => {
   return (
     <ExperienceItemStyled>
-      <ExperienceItemDate>{props.date}</ExperienceItemDate>
-      <ExperienceItemContent>
-        <ExperienceItemTitle>{props.title}</ExperienceItemTitle>
+      <TimelineColumn>
+        <TimelineDot $current={props.isCurrent} />
+        {!props.isLast && <TimelineLine />}
+      </TimelineColumn>
+
+      <ExperienceCard>
+        <DateRow>
+          <DateBadge>{props.date}</DateBadge>
+          {props.isCurrent && <CurrentBadge>Present</CurrentBadge>}
+        </DateRow>
+
+        <ExperienceItemTitle>
+          {props.title}
+          {props.organization && (
+            <Organization> — {props.organization}</Organization>
+          )}
+        </ExperienceItemTitle>
 
         <ExperienceItemText>{props.text}</ExperienceItemText>
 
         <ExperienceToolsContainer>
           {props.tools.map((tool, i) => (
-            <ExperienceTool key={tool + i} text={tool} />
+            <Tag key={tool + i} text={tool} />
           ))}
         </ExperienceToolsContainer>
-      </ExperienceItemContent>
+      </ExperienceCard>
     </ExperienceItemStyled>
   );
 };
 
 const ExperienceItemStyled = styled.div`
   display: flex;
-  margin-top: 50px;
-  min-height: 200px;
+  align-items: stretch;
+`;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+const TimelineColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: ${(props) => props.theme.spacing.lg};
+`;
 
-  @media (min-width: 1024px) {
+const TimelineDot = styled.div<{ $current?: boolean }>`
+  width: 14px;
+  height: 14px;
+  min-height: 14px;
+  border-radius: 50%;
+  margin-top: 26px;
+  background-color: ${(props) =>
+    props.$current
+      ? props.theme.colors.accent.turquoise
+      : props.theme.colors.background.surfaceRaised};
+  border: 2px solid
+    ${(props) =>
+      props.$current
+        ? props.theme.colors.accent.turquoise
+        : props.theme.colors.border};
+  box-shadow: ${(props) =>
+    props.$current ? `0 0 0 4px ${props.theme.colors.accent.turquoiseMuted}` : "none"};
+`;
+
+const TimelineLine = styled.div`
+  flex: 1;
+  width: 2px;
+  min-height: 30px;
+  margin-top: 4px;
+  background-color: ${(props) => props.theme.colors.border};
+`;
+
+const ExperienceCard = styled.div`
+  flex: 1;
+  padding: ${(props) => props.theme.spacing.lg};
+  margin-bottom: ${(props) => props.theme.spacing.lg};
+  background-color: ${(props) => props.theme.colors.background.surface};
+  border: 1px solid ${(props) => props.theme.colors.border};
+  border-radius: ${(props) => props.theme.radii.lg};
+  transition: transform ${(props) => props.theme.transitions.base},
+    box-shadow ${(props) => props.theme.transitions.base},
+    border-color ${(props) => props.theme.transitions.base};
+
+  @media (min-width: ${(props) => props.theme.breakpoints.nav}) {
     &:hover {
-      background-color: rgba(30, 41, 59, 0.5);
-      border-radius: 10px;
+      transform: translateY(-2px);
+      box-shadow: ${(props) => props.theme.shadows.sm};
+      border-color: ${(props) => props.theme.colors.accent.turquoiseMuted};
     }
   }
 `;
 
-const ExperienceItemDate = styled.div`
-  color: ${(props) => props.theme.colors.grey};
-  width: 35%;
-  margin-right: 20px;
-  padding: 10px 10px;
-  margin-top: 20px;
-  @media (max-width: 768px) {
-    margin: 0;
-    width: 100%;
-    margin-bottom: 15px;
-  }
+const DateRow = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: ${(props) => props.theme.spacing.sm};
 `;
 
-const ExperienceItemContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+const DateBadge = styled.span`
+  color: ${(props) => props.theme.colors.text.muted};
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+`;
+
+const CurrentBadge = styled.span`
+  color: ${(props) => props.theme.colors.accent.turquoise};
+  background-color: ${(props) => props.theme.colors.accent.turquoiseMuted};
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: ${(props) => props.theme.radii.pill};
 `;
 
 const ExperienceItemTitle = styled.h4`
-  color: ${(props) => props.theme.colors.white};
-  margin-top: 20px;
+  color: ${(props) => props.theme.colors.text.primary};
+  margin-top: ${(props) => props.theme.spacing.sm};
   word-spacing: 2px;
-  letter-spacing: 1.3px;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+`;
+
+const Organization = styled.span`
+  color: ${(props) => props.theme.colors.text.secondary};
+  font-weight: 400;
 `;
 
 const ExperienceItemText = styled.p`
-  color: ${(props) => props.theme.colors.grey};
+  color: ${(props) => props.theme.colors.text.secondary};
   line-height: 1.7;
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: ${(props) => props.theme.spacing.sm};
 `;
 
 const ExperienceToolsContainer = styled.div`
   width: 100%;
-  height: auto;
-  margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  margin-top: ${(props) => props.theme.spacing.md};
 `;

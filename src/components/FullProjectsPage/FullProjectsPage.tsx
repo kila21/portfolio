@@ -1,77 +1,22 @@
 import styled from "styled-components";
-import { FullProjectsItem } from "./FullProjetsItem";
+import { ProjectCard } from "../ProjectCard/ProjectCard";
+import { projects } from "../../data/projects";
 
 export const FullProjectsPage = () => {
+  const allProjects = [...projects].sort((a, b) => b.year - a.year);
+
   return (
     <FullProjectsPageStyled>
       <FullProjectsBack href="/">
         &larr;
         <FullProjectsAuthor>Luka Kilasonia</FullProjectsAuthor>
       </FullProjectsBack>
-      <FullProjectsTitle>All Project</FullProjectsTitle>
+      <FullProjectsTitle>All Projects</FullProjectsTitle>
 
       <FullProjectsContainer>
-        <FullProjectsItem
-          date={2024}
-          link="https://spotify-app-kila21.vercel.app/"
-          project="Spotify Profile App"
-          tools={[
-            "typescript",
-            "react",
-            "router",
-            "styled components",
-            "spotify dashboard",
-            "spotify api",
-          ]}
-        ></FullProjectsItem>
-
-        <FullProjectsItem
-          date={2023}
-          link="https://eat-curious-clone-rose.vercel.app/"
-          project="Eat Curious Clone"
-          tools={["typescript", "react", "router", "styled components"]}
-        ></FullProjectsItem>
-
-        <FullProjectsItem
-          date={2023}
-          link="https://lepay-tourism-clone.vercel.app/"
-          project="Tourism Website Clone"
-          tools={[
-            "typescript",
-            "react",
-            "router",
-            "react-slick",
-            "styled components",
-          ]}
-        ></FullProjectsItem>
-
-        <FullProjectsItem
-          date={2023}
-          link="https://weather-app-kila.vercel.app/"
-          project="Weather App"
-          tools={["typescript", "react"]}
-        ></FullProjectsItem>
-
-        <FullProjectsItem
-          date={2023}
-          link="https://to-do-phi-opal.vercel.app/"
-          project="Todo App (test@test.com, test123)"
-          tools={["React", "Redux", "Typescript"]}
-        ></FullProjectsItem>
-
-        <FullProjectsItem
-          date={2022}
-          link="https://redberry-bootcamp-assigment6.vercel.app/"
-          project="Redberry #6(only 1920x Any px)"
-          tools={["Javascript", "react"]}
-        ></FullProjectsItem>
-
-        <FullProjectsItem
-          date={2022}
-          link="https://github.com/kila21/Redbery-Project"
-          project="Redberry Project"
-          tools={["Angular"]}
-        ></FullProjectsItem>
+        {allProjects.map((project) => (
+          <ProjectCard key={project.id} project={project} variant="compact" />
+        ))}
       </FullProjectsContainer>
     </FullProjectsPageStyled>
   );
@@ -85,7 +30,7 @@ const FullProjectsPageStyled = styled.div`
 `;
 
 const FullProjectsTitle = styled.h1`
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.text.primary};
   text-transform: uppercase;
   letter-spacing: 2px;
 `;
@@ -95,18 +40,31 @@ const FullProjectsAuthor = styled.h3`
 `;
 
 const FullProjectsBack = styled.a`
-  color: ${(props) => props.theme.colors.turquoise};
+  color: ${(props) => props.theme.colors.accent.turquoise};
   text-decoration: none;
   display: flex;
   align-items: center;
   min-height: 50px;
   cursor: pointer;
+  transition: opacity ${(props) => props.theme.transitions.fast};
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const FullProjectsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: ${(props) => props.theme.spacing.lg};
   width: 100%;
-  height: auto;
   margin-top: 50px;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: ${(props) => props.theme.breakpoints.tablet}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;

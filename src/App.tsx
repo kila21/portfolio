@@ -24,7 +24,7 @@ const MainContentStyled = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-  @media (max-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.nav}) {
     width: 100%;
   }
 `;
