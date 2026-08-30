@@ -5,7 +5,9 @@ const QUERY = "(hover: hover) and (pointer: fine)";
 /** True on devices with a precise pointer (mouse) — used to gate cursor effects. */
 export const useHoverCapable = () => {
   const [capable, setCapable] = useState(
-    () => typeof window !== "undefined" && window.matchMedia?.(QUERY).matches === true
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia?.(QUERY).matches === true
   );
 
   useEffect(() => {

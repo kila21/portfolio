@@ -27,7 +27,10 @@ export const Contact = () => {
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           access_key: ACCESS_KEY,
           subject: `Portfolio message from ${data.name || "someone"}`,
@@ -41,7 +44,9 @@ export const Contact = () => {
         form.reset();
       } else {
         setStatus("error");
-        setError(json.message || "Something went wrong. Please email me instead.");
+        setError(
+          json.message || "Something went wrong. Please email me instead."
+        );
       }
     } catch {
       setStatus("error");
@@ -70,7 +75,13 @@ export const Contact = () => {
             <Form onSubmit={onSubmit} noValidate>
               <Field>
                 <label htmlFor="name">Name</label>
-                <input id="name" name="name" type="text" required autoComplete="name" />
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  autoComplete="name"
+                />
               </Field>
               <Field>
                 <label htmlFor="email">Email</label>
@@ -89,7 +100,12 @@ export const Contact = () => {
 
               <Honeypot>
                 <label htmlFor="botcheck">Leave this field empty</label>
-                <input id="botcheck" name="botcheck" type="checkbox" tabIndex={-1} />
+                <input
+                  id="botcheck"
+                  name="botcheck"
+                  type="checkbox"
+                  tabIndex={-1}
+                />
               </Honeypot>
 
               <Button type="submit" disabled={status === "submitting"}>

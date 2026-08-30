@@ -4,7 +4,14 @@ import { Section } from "../common/Section";
 const skillGroups: { label: string; skills: string[] }[] = [
   {
     label: "Frontend",
-    skills: ["JavaScript", "TypeScript", "React", "Redux", "Angular", "Next.js"],
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Redux",
+      "Angular",
+      "Next.js",
+    ],
   },
   { label: "Styling", skills: ["CSS3", "Styled Components", "Tailwind CSS"] },
   {
@@ -34,9 +41,9 @@ export const About = () => (
         </p>
         <p>
           Right now I'm a <strong>SAP Fiori Developer</strong> at{" "}
-          <strong>LeverX</strong>, working with SAPUI5 and OData and getting into
-          SAP CAP and BTP. Outside of work I keep learning through side projects
-          and courses.
+          <strong>LeverX</strong>, working with SAPUI5 and OData and getting
+          into SAP CAP and BTP. Outside of work I keep learning through side
+          projects and courses.
         </p>
         <p>
           If you're hiring, need a hand on a project, or just want to talk

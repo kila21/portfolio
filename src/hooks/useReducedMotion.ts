@@ -5,7 +5,8 @@ const QUERY = "(prefers-reduced-motion: reduce)";
 export const useReducedMotion = () => {
   const [reduced, setReduced] = useState(
     () =>
-      typeof window !== "undefined" && window.matchMedia?.(QUERY).matches === true
+      typeof window !== "undefined" &&
+      window.matchMedia?.(QUERY).matches === true
   );
 
   useEffect(() => {

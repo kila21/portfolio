@@ -26,7 +26,8 @@ const ToggleButton = styled.button`
   border-radius: ${(props) => props.theme.radii.pill};
   border: 1px solid ${(props) => props.theme.colors.line};
   color: ${(props) => props.theme.colors.textMuted};
-  transition: color ${(props) => props.theme.transitions.base},
+  transition:
+    color ${(props) => props.theme.transitions.base},
     border-color ${(props) => props.theme.transitions.base};
 
   &:hover {

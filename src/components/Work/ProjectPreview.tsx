@@ -39,7 +39,11 @@ export const ProjectPreview = ({
   const image = shown?.image;
 
   return (
-    <Floating ref={ref} data-visible={Boolean(project && image)} aria-hidden="true">
+    <Floating
+      ref={ref}
+      data-visible={Boolean(project && image)}
+      aria-hidden="true"
+    >
       {image && <img src={image} alt="" loading="eager" decoding="async" />}
     </Floating>
   );
@@ -59,7 +63,8 @@ const Floating = styled.div`
   pointer-events: none;
   opacity: 0;
   scale: 0.92;
-  transition: opacity ${(props) => props.theme.transitions.base},
+  transition:
+    opacity ${(props) => props.theme.transitions.base},
     scale ${(props) => props.theme.transitions.base};
 
   &[data-visible="true"] {

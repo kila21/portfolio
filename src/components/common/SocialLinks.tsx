@@ -29,7 +29,9 @@ export const SocialLinks = ({ className }: { className?: string }) => (
         <a
           href={social.href}
           target={social.href.startsWith("http") ? "_blank" : undefined}
-          rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          rel={
+            social.href.startsWith("http") ? "noopener noreferrer" : undefined
+          }
           aria-label={social.label}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -50,7 +52,8 @@ const List = styled.ul`
   a {
     display: inline-flex;
     color: ${(props) => props.theme.colors.textMuted};
-    transition: color ${(props) => props.theme.transitions.base},
+    transition:
+      color ${(props) => props.theme.transitions.base},
       transform ${(props) => props.theme.transitions.fast};
   }
 

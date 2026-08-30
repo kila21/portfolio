@@ -85,6 +85,7 @@ export const ThemeModeProvider = ({
 // eslint-disable-next-line react-refresh/only-export-components
 export const useThemeMode = () => {
   const ctx = useContext(ThemeModeContext);
-  if (!ctx) throw new Error("useThemeMode must be used within ThemeModeProvider");
+  if (!ctx)
+    throw new Error("useThemeMode must be used within ThemeModeProvider");
   return ctx;
 };

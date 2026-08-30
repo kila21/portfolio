@@ -85,7 +85,8 @@ const Card = styled(Link)`
   border: 1px solid ${(props) => props.theme.colors.line};
   border-radius: ${(props) => props.theme.radii.lg};
   overflow: hidden;
-  transition: transform ${(props) => props.theme.transitions.base},
+  transition:
+    transform ${(props) => props.theme.transitions.base},
     border-color ${(props) => props.theme.transitions.base};
 
   &:hover {

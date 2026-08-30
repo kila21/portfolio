@@ -60,7 +60,13 @@ export const projects: ProjectEntry[] = [
       "Log in with Spotify to explore your listening: top tracks, recent plays, playlists and more.",
     image: spotify,
     year: 2024,
-    tools: ["TypeScript", "React", "React Router", "Styled Components", "Spotify API"],
+    tools: [
+      "TypeScript",
+      "React",
+      "React Router",
+      "Styled Components",
+      "Spotify API",
+    ],
     liveLink: "https://spotify-app-kila21.vercel.app/",
     repoLink: "https://github.com/kila21/Spotify-App",
     featured: true,
@@ -93,7 +99,8 @@ export const projects: ProjectEntry[] = [
       "Handled loading, empty and error states around the API calls",
       "Parsed and formatted the forecast response into a readable UI",
     ],
-    outcome: "A small, focused app that practises the fetch-render-error loop cleanly.",
+    outcome:
+      "A small, focused app that practises the fetch-render-error loop cleanly.",
   },
   {
     id: "todo-app",

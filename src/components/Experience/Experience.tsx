@@ -29,7 +29,11 @@ export const Experience = () => (
       ))}
     </List>
 
-    <ResumeLink href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">
+    <ResumeLink
+      href={profile.resumeUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       View full résumé <span aria-hidden="true">↗</span>
     </ResumeLink>
   </Section>

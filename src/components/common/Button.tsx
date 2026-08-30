@@ -20,7 +20,8 @@ const base = css<{ $variant: Variant }>`
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
-  transition: transform ${(props) => props.theme.transitions.fast},
+  transition:
+    transform ${(props) => props.theme.transitions.fast},
     background-color ${(props) => props.theme.transitions.base},
     border-color ${(props) => props.theme.transitions.base},
     color ${(props) => props.theme.transitions.base};

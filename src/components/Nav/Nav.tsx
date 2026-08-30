@@ -161,7 +161,8 @@ const ContactLink = styled.a<{ $active?: boolean }>`
       props.$active ? props.theme.colors.accent : props.theme.colors.line};
   font-size: 14px;
   font-weight: 600;
-  transition: border-color ${(props) => props.theme.transitions.base},
+  transition:
+    border-color ${(props) => props.theme.transitions.base},
     color ${(props) => props.theme.transitions.base};
 
   &:hover {
@@ -190,7 +191,8 @@ const MenuButton = styled.button`
     height: 1.6px;
     margin: 0 auto;
     background-color: ${(props) => props.theme.colors.text};
-    transition: transform ${(props) => props.theme.transitions.base},
+    transition:
+      transform ${(props) => props.theme.transitions.base},
       opacity ${(props) => props.theme.transitions.base};
   }
   span:first-child[data-open="true"] {

@@ -33,93 +33,93 @@ export const ProjectDetail = () => {
         <Container>
           <Back to="/#work">← All work</Back>
 
-        <Header>
-          <h1>{project.title}</h1>
-          <Facts>
-            <span>{project.year}</span>
-            {project.role && <span>{project.role}</span>}
-          </Facts>
-          <Links>
-            {project.liveLink && (
-              <ButtonLink
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Live site
-              </ButtonLink>
-            )}
-            {project.repoLink && (
-              <ButtonLink
-                href={project.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="secondary"
-              >
-                Repository
-              </ButtonLink>
-            )}
-          </Links>
-        </Header>
+          <Header>
+            <h1>{project.title}</h1>
+            <Facts>
+              <span>{project.year}</span>
+              {project.role && <span>{project.role}</span>}
+            </Facts>
+            <Links>
+              {project.liveLink && (
+                <ButtonLink
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live site
+                </ButtonLink>
+              )}
+              {project.repoLink && (
+                <ButtonLink
+                  href={project.repoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="secondary"
+                >
+                  Repository
+                </ButtonLink>
+              )}
+            </Links>
+          </Header>
 
-        {project.image && (
-          <Shot>
-            <img
-              src={project.image}
-              alt={`${project.title} screenshot`}
-              decoding="async"
-            />
-          </Shot>
-        )}
-
-        <Body>
-          {project.problem && (
-            <Block>
-              <h2>The problem</h2>
-              <p>{project.problem}</p>
-            </Block>
+          {project.image && (
+            <Shot>
+              <img
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                decoding="async"
+              />
+            </Shot>
           )}
 
-          {project.contributions && project.contributions.length > 0 && (
+          <Body>
+            {project.problem && (
+              <Block>
+                <h2>The problem</h2>
+                <p>{project.problem}</p>
+              </Block>
+            )}
+
+            {project.contributions && project.contributions.length > 0 && (
+              <Block>
+                <h2>What I did</h2>
+                <DidList>
+                  {project.contributions.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </DidList>
+              </Block>
+            )}
+
+            {project.outcome && (
+              <Block>
+                <h2>Outcome</h2>
+                <p>{project.outcome}</p>
+              </Block>
+            )}
+
             <Block>
-              <h2>What I did</h2>
-              <DidList>
-                {project.contributions.map((item) => (
-                  <li key={item}>{item}</li>
+              <h2>Stack</h2>
+              <TagList>
+                {project.tools.map((tool) => (
+                  <Tag key={tool} text={tool} />
                 ))}
-              </DidList>
+              </TagList>
             </Block>
-          )}
+          </Body>
 
-          {project.outcome && (
-            <Block>
-              <h2>Outcome</h2>
-              <p>{project.outcome}</p>
-            </Block>
-          )}
-
-          <Block>
-            <h2>Stack</h2>
-            <TagList>
-              {project.tools.map((tool) => (
-                <Tag key={tool} text={tool} />
+          <More>
+            <h2>More work</h2>
+            <ul>
+              {others.map((p) => (
+                <li key={p.id}>
+                  <Link to={`/projects/${p.id}`}>
+                    {p.title} <span aria-hidden="true">→</span>
+                  </Link>
+                </li>
               ))}
-            </TagList>
-          </Block>
-        </Body>
-
-        <More>
-          <h2>More work</h2>
-          <ul>
-            {others.map((p) => (
-              <li key={p.id}>
-                <Link to={`/projects/${p.id}`}>
-                  {p.title} <span aria-hidden="true">→</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </More>
+            </ul>
+          </More>
         </Container>
       </main>
       <Footer />

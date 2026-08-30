@@ -11,6 +11,7 @@ import { NotFound, RouteError } from "./pages/NotFound";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { theme } from "./styles/theme";
 import { ThemeModeProvider } from "./context/ThemeMode";
+import { ErrorBoundary } from "./components/common/ErrorBoundary";
 
 const router = createBrowserRouter([
   { path: "/", element: <App />, errorElement: <RouteError /> },
@@ -25,12 +26,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeModeProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <RouterProvider router={router} />
-        <Analytics />
-      </ThemeProvider>
-    </ThemeModeProvider>
+    <ErrorBoundary>
+      <ThemeModeProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <RouterProvider router={router} />
+          <Analytics />
+        </ThemeProvider>
+      </ThemeModeProvider>
+    </ErrorBoundary>
   </React.StrictMode>
 );
