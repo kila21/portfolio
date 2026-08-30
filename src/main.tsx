@@ -1,25 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import { GlobalStyles } from "./styles/GlobalStyles.ts";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme.ts";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { FullProjectsPage } from "./components/FullProjectsPage/FullProjectsPage.tsx";
+import { ThemeProvider } from "styled-components";
+import { Analytics } from "@vercel/analytics/react";
+
+import App from "./App";
+import { AllProjects } from "./pages/AllProjects";
+import { ProjectDetail } from "./pages/ProjectDetail";
+import { NotFound, RouteError } from "./pages/NotFound";
+import { GlobalStyles } from "./styles/GlobalStyles";
+import { theme } from "./styles/theme";
+import { ThemeModeProvider } from "./context/ThemeMode";
 
 const router = createBrowserRouter([
+  { path: "/", element: <App />, errorElement: <RouteError /> },
+  { path: "/projects", element: <AllProjects />, errorElement: <RouteError /> },
   {
-    path: "/",
-    element: <App />,
+    path: "/projects/:id",
+    element: <ProjectDetail />,
+    errorElement: <RouteError />,
   },
-  { path: "/projects", element: <FullProjectsPage /> },
+  { path: "*", element: <NotFound /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-      <GlobalStyles />
-    </ThemeProvider>
+    <ThemeModeProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <RouterProvider router={router} />
+        <Analytics />
+      </ThemeProvider>
+    </ThemeModeProvider>
   </React.StrictMode>
 );

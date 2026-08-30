@@ -1,22 +1,22 @@
+// Colors are CSS custom properties (defined in GlobalStyles) so that switching
+// light/dark only flips one attribute on <html> — no React re-render.
+
 export const theme = {
   colors: {
-    background: {
-      base: "rgb(15 23 42 / 1)",
-      surface: "rgb(30 41 59 / 1)",
-      surfaceHover: "rgba(30, 41, 59, 0.5)",
-      surfaceRaised: "rgb(38 50 71 / 1)",
-    },
-    text: {
-      primary: "#E2E8F0",
-      secondary: "#94A3B8",
-      muted: "#64748B",
-    },
-    accent: {
-      turquoise: "rgb(94 234 212 / 1)",
-      turquoiseMuted: "rgba(38, 166, 154, 0.2)",
-      turquoiseHover: "rgb(153 246 228 / 1)",
-    },
-    border: "rgba(148, 163, 184, 0.15)",
+    bg: "var(--bg)",
+    bgElevated: "var(--bg-elevated)",
+    surface: "var(--surface)",
+    text: "var(--text)",
+    textMuted: "var(--text-muted)",
+    line: "var(--line)",
+    accent: "var(--accent)",
+    accentText: "var(--accent-text)",
+    accentSoft: "var(--accent-soft)",
+  },
+  fonts: {
+    display: `"Fraunces", Georgia, "Times New Roman", serif`,
+    sans: `"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
+    mono: `"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`,
   },
   spacing: {
     xs: "4px",
@@ -24,28 +24,33 @@ export const theme = {
     md: "16px",
     lg: "24px",
     xl: "40px",
-    xxl: "64px",
-  },
-  breakpoints: {
-    mobile: "600px",
-    tablet: "768px",
-    nav: "1024px",
-    wide: "1025px",
-  },
-  transitions: {
-    fast: "150ms ease",
-    base: "250ms ease",
-    slow: "400ms cubic-bezier(0.4, 0, 0.2, 1)",
+    xxl: "72px",
+    xxxl: "120px",
   },
   radii: {
     sm: "6px",
-    md: "10px",
-    lg: "16px",
-    pill: "30px",
+    md: "12px",
+    lg: "20px",
+    pill: "999px",
   },
-  shadows: {
-    sm: "0 2px 8px rgba(0, 0, 0, 0.2)",
-    md: "0 8px 30px rgba(0, 0, 0, 0.3)",
+  transitions: {
+    fast: "120ms ease",
+    base: "220ms cubic-bezier(0.4, 0, 0.2, 1)",
+    slow: "450ms cubic-bezier(0.16, 1, 0.3, 1)",
+  },
+  layout: {
+    maxWidth: "1120px",
+    prose: "660px",
+  },
+  breakpoints: {
+    sm: "560px",
+    md: "768px",
+    lg: "1024px",
+  },
+  z: {
+    nav: 100,
+    preview: 90,
+    skipLink: 200,
   },
 };
 

@@ -1,137 +1,118 @@
 import styled from "styled-components";
-import { Tag } from "../common/Tag";
-import { useScrollReveal } from "../../hooks/useScrollReveal";
-import { scrollReveal } from "../../styles/scrollReveal";
+import { Section } from "../common/Section";
 
 const skillGroups: { label: string; skills: string[] }[] = [
   {
     label: "Frontend",
-    skills: ["JavaScript", "TypeScript", "React", "Redux", "Angular", "HTML5"],
+    skills: ["JavaScript", "TypeScript", "React", "Redux", "Angular", "Next.js"],
   },
-  {
-    label: "Styling",
-    skills: ["CSS3", "Styled Components", "Tailwind CSS"],
-  },
+  { label: "Styling", skills: ["CSS3", "Styled Components", "Tailwind CSS"] },
   {
     label: "Backend",
-    skills: ["Node.js", "Python", "Django", "Django REST Framework"],
+    skills: ["Node.js", "Python", "Django", "Django REST", "PostgreSQL"],
   },
-  {
-    label: "SAP",
-    skills: ["SAPUI5", "OData V2 / V4", "SAP BTP", "SAP Workzone"],
-  },
-  {
-    label: "Tools",
-    skills: ["Git", "GitHub", "Postman", "VS Code", "Claude"],
-  },
+  { label: "SAP", skills: ["SAPUI5", "OData V2 / V4", "SAP BTP", "SAP CAP"] },
+  { label: "Tooling", skills: ["Git", "Vite", "Postman", "Figma"] },
 ];
 
-export const About = () => {
-  const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+export const About = () => (
+  <Section id="about" kicker="03 / About" title="A bit about me">
+    <Grid>
+      <Prose>
+        <p>
+          I'm a React developer who cares about the details — performance,
+          accessibility, and interfaces that feel calm to use. Most of what I
+          know comes from building and shipping real projects rather than a
+          classroom.
+        </p>
+        <p>
+          My core stack is <strong>React</strong> and{" "}
+          <strong>TypeScript</strong> with <strong>Redux</strong> for state, but
+          I've also worked in <strong>Angular</strong> and built REST APIs with{" "}
+          <strong>Python</strong> and <strong>Django</strong>. Seeing the whole
+          system helps me build frontends that fit the backend cleanly.
+        </p>
+        <p>
+          Right now I'm a <strong>SAP Fiori Developer</strong> at{" "}
+          <strong>LeverX</strong>, working with SAPUI5 and OData and getting into
+          SAP CAP and BTP. Outside of work I keep learning through side projects
+          and courses.
+        </p>
+        <p>
+          If you're hiring, need a hand on a project, or just want to talk
+          frontend — <a href="#contact">get in touch</a>.
+        </p>
+      </Prose>
 
-  return (
-    <AboutStyled id="about" ref={ref} $visible={isVisible}>
-      <AboutTitle>About</AboutTitle>
-      <AboutText>
-        Hey there! I'm Luka Kilasonia, a <strong>React developer</strong> with
-        hands-on experience building responsive web applications through
-        personal projects and a deployed portfolio. I'm fascinated by the
-        intersection of design and technology, and I thrive on the challenges
-        of bringing creative concepts to life through code.
-      </AboutText>
-
-      <AboutText>
-        My main library is <strong>React</strong>, alongside{" "}
-        <strong>Redux</strong> for state management, but I'm not just a
-        frontend specialist — I'm also comfortable working with{" "}
-        <strong>Angular</strong> and have backend experience building APIs
-        with <strong>Python</strong> and <strong>Django</strong>. That
-        full-picture view of an application helps me build frontends that fit
-        cleanly with whatever is powering them.
-      </AboutText>
-
-      <AboutText>
-        Right now, I'm working as a <strong>SAP Fiori Developer</strong> at{" "}
-        <strong>LeverX</strong>, building foundational skills in{" "}
-        <strong>SAPUI5</strong> and <strong>OData</strong>, with a growing
-        interest in SAP CAP. I'm continuously learning through personal
-        projects and online courses, and I'm always looking for ways to
-        connect what I already know with what's next.
-      </AboutText>
-
-      <AboutText>
-        Feel free to reach out to me to discuss potential collaborations,
-        project opportunities, or just to chat about all things front-end
-        development. Let's create something awesome together!
-      </AboutText>
-
-      <SkillsContainer>
+      <Skills>
         {skillGroups.map((group) => (
-          <SkillGroup key={group.label}>
-            <SkillGroupLabel>{group.label}</SkillGroupLabel>
-            <SkillTags>
+          <div key={group.label}>
+            <SkillLabel>{group.label}</SkillLabel>
+            <SkillItems>
               {group.skills.map((skill) => (
-                <Tag key={skill} text={skill} />
+                <li key={skill}>{skill}</li>
               ))}
-            </SkillTags>
-          </SkillGroup>
+            </SkillItems>
+          </div>
         ))}
-      </SkillsContainer>
-    </AboutStyled>
-  );
-};
+      </Skills>
+    </Grid>
+  </Section>
+);
 
-const AboutStyled = styled.div<{ $visible?: boolean }>`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 50px;
-  ${scrollReveal}
-  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    margin-left: 30px;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: ${(props) => props.theme.spacing.xxl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: ${(props) => props.theme.spacing.xl};
   }
 `;
 
-const AboutTitle = styled.h3`
-  display: none;
-  color: ${(props) => props.theme.colors.text.primary};
-  @media (max-width: ${(props) => props.theme.breakpoints.nav}) {
-    display: flex;
-  }
-`;
-
-const AboutText = styled.p`
-  width: 100%;
-  color: ${(props) => props.theme.colors.text.secondary};
-  margin-top: 20px;
-
-  & > strong {
-    color: ${(props) => props.theme.colors.text.primary};
-  }
-`;
-
-const SkillsContainer = styled.div`
-  width: 100%;
-  margin-top: ${(props) => props.theme.spacing.lg};
+const Prose = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.md};
+  color: ${(props) => props.theme.colors.textMuted};
+  font-size: 1.05rem;
+
+  strong {
+    color: ${(props) => props.theme.colors.text};
+    font-weight: 600;
+  }
+
+  a {
+    color: ${(props) => props.theme.colors.accent};
+    border-bottom: 1px solid ${(props) => props.theme.colors.accent};
+  }
 `;
 
-const SkillGroup = styled.div`
+const Skills = styled.div`
   display: flex;
   flex-direction: column;
+  gap: ${(props) => props.theme.spacing.lg};
 `;
 
-const SkillGroupLabel = styled.h5`
-  color: ${(props) => props.theme.colors.text.primary};
+const SkillLabel = styled.h3`
+  font-family: ${(props) => props.theme.fonts.mono};
+  font-size: 12px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: ${(props) => props.theme.colors.accent};
   margin-bottom: ${(props) => props.theme.spacing.sm};
 `;
 
-const SkillTags = styled.div`
+const SkillItems = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  gap: ${(props) => props.theme.spacing.xs} ${(props) => props.theme.spacing.md};
+  list-style: none;
+
+  li {
+    font-size: 0.95rem;
+    color: ${(props) => props.theme.colors.text};
+  }
 `;
